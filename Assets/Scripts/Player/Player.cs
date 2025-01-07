@@ -59,14 +59,14 @@ public class Player : MonoBehaviour
         #region Move X
         if (UnityEngine.Input.GetKey(KeyCode.A))
         {
-            rb2D.velocity = new Vector2(-_currentSpeed, rb2D.velocity.y);
+            rb2D.linearVelocity = new Vector2(-_currentSpeed, rb2D.linearVelocity.y);
             animator.SetBool(boolWalk, true);
             rb2D.transform.localScale = new Vector3(-10, 10, 1);
             _playerDirection = -1;
         }
         else if (UnityEngine.Input.GetKey(KeyCode.D))
         {
-            rb2D.velocity = new Vector2(_currentSpeed, rb2D.velocity.y);
+            rb2D.linearVelocity = new Vector2(_currentSpeed, rb2D.linearVelocity.y);
             animator.SetBool(boolWalk, true);
             rb2D.transform.localScale = new Vector3(10, 10, 1);
             _playerDirection = 1;
@@ -79,13 +79,13 @@ public class Player : MonoBehaviour
 
         #region Move Y
 
-        if (rb2D.velocity.x > 0)
+        if (rb2D.linearVelocity.x > 0)
         {
-            rb2D.velocity -= soPlayerSetup.friction;
+            rb2D.linearVelocity -= soPlayerSetup.friction;
         }
-        else if (rb2D.velocity.x < 0)
+        else if (rb2D.linearVelocity.x < 0)
         {
-            rb2D.velocity += soPlayerSetup.friction;
+            rb2D.linearVelocity += soPlayerSetup.friction;
         }
 
         #endregion
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
     {
         if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && _isGround)
         {           
-            rb2D.velocity = Vector2.up * soPlayerSetup.forceJump;
+            rb2D.linearVelocity = Vector2.up * soPlayerSetup.forceJump;
             rb2D.transform.localScale = new Vector3(11, 10, 1);
             if (tween != null) tween.Kill();
 
