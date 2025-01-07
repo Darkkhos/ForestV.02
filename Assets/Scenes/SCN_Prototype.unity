@@ -2066,13 +2066,10 @@ MonoBehaviour:
   projectile: {fileID: 1446296720312022822, guid: 44528c9ce2c84d3439a36dea3d6cbe35, type: 3}
   shootPoint: {fileID: 2001256273}
   poolManager: {fileID: 839761301}
-  friction: {x: 0.11, y: 0}
-  speed: 15
-  speedRun: 25
-  forceJump: 35
-  jumpScaleX: 11
-  jumpScaleY: 9
-  jumpScaleTime: 0.3
+  soPlayerSetup: {fileID: 11400000, guid: 23f446cfe58a1fb4aac22a968258ccd2, type: 2}
+  soJumpScaleX: {fileID: 11400000, guid: c94536926af7f5949bf71a9d6955a429, type: 2}
+  soJumpScaleY: {fileID: 11400000, guid: d58f54ed8033e1949ba57c916e52317d, type: 2}
+  soJumpScaleTime: {fileID: 11400000, guid: 664c97f31d45db448b3aa1c9b909838f, type: 2}
   ease: 27
   boolWalk: Walk
   animator: {fileID: 2032163539}

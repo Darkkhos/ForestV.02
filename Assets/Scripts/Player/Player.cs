@@ -12,16 +12,13 @@ public class Player : MonoBehaviour
 
     public PoolManager poolManager;
 
-    [Header("Speed Setup")]
-    public Vector2 friction = new (-.1f, 0);
-    public float speed;
-    public float speedRun;
-    public float forceJump = 2;
+    public SOPlayerSetup soPlayerSetup;
 
     [Header("Animation Setup")]
-    public float jumpScaleX = 1.3f;
-    public float jumpScaleY = 3.5f;    
-    public float jumpScaleTime = .03f;
+    public SOFloat soJumpScaleX;
+    public SOFloat soJumpScaleY;
+    public SOFloat soJumpScaleTime;
+
 
     public Ease ease = Ease.OutBack;
 
@@ -50,9 +47,9 @@ public class Player : MonoBehaviour
     private void HandleMovements()
     {
         if (UnityEngine.Input.GetKey(KeyCode.LeftShift))
-            _currentSpeed = speedRun;
+            _currentSpeed = soPlayerSetup.speedRun;
         else
-            _currentSpeed = speed;
+            _currentSpeed = soPlayerSetup.speed;
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse0))
             SpawnObject();
@@ -84,11 +81,11 @@ public class Player : MonoBehaviour
 
         if (rb2D.velocity.x > 0)
         {
-            rb2D.velocity -= friction;
+            rb2D.velocity -= soPlayerSetup.friction;
         }
         else if (rb2D.velocity.x < 0)
         {
-            rb2D.velocity += friction;
+            rb2D.velocity += soPlayerSetup.friction;
         }
 
         #endregion
@@ -99,7 +96,7 @@ public class Player : MonoBehaviour
     {
         if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && _isGround)
         {           
-            rb2D.velocity = Vector2.up * forceJump;
+            rb2D.velocity = Vector2.up * soPlayerSetup.forceJump;
             rb2D.transform.localScale = new Vector3(11, 10, 1);
             if (tween != null) tween.Kill();
 
@@ -121,8 +118,8 @@ public class Player : MonoBehaviour
 
     private void HandleScaleJump() 
     {
-        rb2D.transform.DOScaleY(jumpScaleY, jumpScaleTime).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        tween = DOTween.To(ScaleXGetter, ScaleXSetter, jumpScaleX, jumpScaleTime).SetEase(ease);
+        rb2D.transform.DOScaleY(soJumpScaleY.value, soJumpScaleTime.value).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        tween = DOTween.To(ScaleXGetter, ScaleXSetter, soJumpScaleX.value, soJumpScaleTime.value).SetEase(ease);
     }
 
     private float ScaleXGetter()
