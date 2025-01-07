@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 1fbb0c487c2c107408eca3ec33b50769
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rb2D: {instanceID: 0}
+  - projectile: {instanceID: 0}
+  - shootPoint: {instanceID: 0}
+  - poolManager: {instanceID: 0}
+  - soJumpScaleX: {instanceID: 0}
+  - soJumpScaleY: {instanceID: 0}
+  - soJumpScaleTime: {instanceID: 0}
+  - animator: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
